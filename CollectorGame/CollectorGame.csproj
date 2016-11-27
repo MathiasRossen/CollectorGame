@@ -46,6 +46,7 @@
     <Compile Include="Blocks\MasterBlock.cs" />
     <Compile Include="Blocks\Copper.cs" />
     <Compile Include="Display\Events.cs" />
+    <Compile Include="GameObjectFactory.cs" />
     <Compile Include="Display\InventoryManager.cs" />
     <Compile Include="Display\MainGame.cs" />
     <Compile Include="GameWorld.cs" />

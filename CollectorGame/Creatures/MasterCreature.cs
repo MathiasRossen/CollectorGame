@@ -41,15 +41,19 @@ namespace CollectorGame
             switch (input)
             {
                 case "w":
+                case "y":
                     return new Point(Position.X, Position.Y - 1);
 
                 case "s":
+                case "h":
                     return new Point(Position.X, Position.Y + 1);
 
                 case "a":
+                case "g":
                     return new Point(Position.X - 1, Position.Y);
 
                 case "d":
+                case "j":
                     return new Point(Position.X + 1, Position.Y);
 
                 default:

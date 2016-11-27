@@ -16,7 +16,23 @@ namespace CollectorGame
                 Console.Clear();
                 gameWorld.DisplayWorld();
                 input = GetInput();
-                player.Move(input, gameWorld);
+
+                switch (input)
+                {
+                    case "w":
+                    case "s":
+                    case "a":
+                    case "d":
+                        player.Move(input, gameWorld);
+                        break;
+
+                    case "y":
+                    case "h":
+                    case "g":
+                    case "j":
+                        player.DropSelectedItem(input, gameWorld);
+                        break;
+                }
             }
             while (running);
 

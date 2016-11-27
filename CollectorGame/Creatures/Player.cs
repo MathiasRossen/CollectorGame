@@ -10,6 +10,14 @@ namespace CollectorGame
     {
         private Inventory inventory;
 
+        public Inventory Inventory
+        {
+            get
+            {
+                return inventory;
+            }
+        }
+
         public Player(Point position)
         {
             inventory = new Inventory(9);
@@ -42,6 +50,23 @@ namespace CollectorGame
         {
             if (!Collision(input, gameWorld))
                 Position = InputToPoint(input);
+        }
+
+        public void DropSelectedItem(string input, GameWorld gameWorld)
+        {
+            IBlock nextTile = gameWorld.GetTile(InputToPoint(input));
+            
+            if (!nextTile.Solid)
+            {
+                IGameObject objectToDrop = inventory.SelectedSlot.Drop();
+
+                if (objectToDrop != null)
+                    if (!nextTile.Solid && objectToDrop.Type == ObjectType.Block)
+                    {
+                        objectToDrop.Position = InputToPoint(input);
+                        gameWorld.PlaceBlock((IBlock)objectToDrop);
+                    }
+            }
         }
     }
 }

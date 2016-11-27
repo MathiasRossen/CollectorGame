@@ -4,6 +4,20 @@ namespace CollectorGame
 {
     public class InventoryManager
     {
+
+        public void DisplayInventory(Player player)
+        {
+            bool running = true;
+            string input;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Items:");
+                Console.WriteLine();
+            }
+            while (running);
+        }
 //        public void DisplayInventory(Player player)
 //        {
 //            bool running = true;

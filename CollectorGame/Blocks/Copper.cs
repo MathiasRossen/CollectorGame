@@ -13,5 +13,11 @@ namespace CollectorGame
         {
             Position = position;
         }
+
+        public Copper()
+            :this(new Point(0, 0))
+        {
+
+        }
     }
 }

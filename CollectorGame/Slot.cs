@@ -53,21 +53,6 @@ namespace CollectorGame
             get;
         }
 
-        public IGameObject Drop(int quantity)
-        {
-            if (!Empty)
-            {
-                if (SlotObject.Type == ObjectType.Block)
-                    Quantity -= 1;
-                else
-                    Quantity -= quantity;
-
-                return SlotObject;
-            }
-
-            return null;
-        }
-
         public Slot(int id)
         {
             this.id = id;
@@ -75,6 +60,27 @@ namespace CollectorGame
             quantity = 0;
         }
 
+        public IGameObject Drop(int quantity)
+        {
+            GameObjectFactory factory = new GameObjectFactory();
+
+            if (!Empty)
+            {
+                if (SlotObject.Type == ObjectType.Block)
+                    Quantity -= 1;
+                else
+                    Quantity -= quantity;
+
+                return factory.CreateGameObject(SlotObject);
+            }
+
+            return null;
+        }
+
+        public IGameObject Drop()
+        {
+            return Drop(1);
+        }
         public override string ToString()
         {
             if (SlotObject == null)

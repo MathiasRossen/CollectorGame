@@ -118,5 +118,19 @@ namespace UnitTests
 
             Assert.AreEqual(1, inventory.SelectedSlotNum);
         }
+
+        [TestMethod]
+        public void SameSlotDropsTwoObjectInstances()
+        {
+            inventory = new Inventory(9);
+            inventory.AddToInventory(new Copper(new Point(0, 0)));
+            inventory.AddToInventory(new Copper(new Point(1, 1)));
+
+            IBlock blockOne = (IBlock)inventory.SelectedSlot.Drop();
+            IBlock blockTwo = (IBlock)inventory.SelectedSlot.Drop();
+
+            Assert.AreEqual(0, blockOne.Position.X);
+            Assert.AreEqual(1, blockTwo.Position.X);
+        }
     }
 }
